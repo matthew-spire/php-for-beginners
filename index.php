@@ -5,12 +5,20 @@
     <title>Demo</title>
 </head>
 <body>
-    <h1>
-        <?php
-            $greeting = "Hi";
+    <h1>Recommended Books</h1>
 
-            echo "$greeting Everybody!";
-        ?>
-    </h1>
+    <?php
+        $recommendedBooks = [
+                "Do Androids Dream of Electric Sheep",
+                "The Langoliers",
+                "Hail Mary"
+        ];
+    ?>
+
+    <ul>
+        <?php foreach ($recommendedBooks as $book) : ?>
+            <li><?= $book ?></li>
+        <?php endforeach; ?>
+    </ul>
 </body>
 </html>
