@@ -3,14 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Demo</title>
+    <style>
+        body {
+            display: grid;
+            place-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: sans-serif;
+        }
+    </style>
 </head>
 <body>
-    <h1>
-        <?php
-            $greeting = "Hi";
+    <?php
+        $bookName = "Dark Matter";
+        $readBook = false;
 
-            echo "$greeting Everybody!";
-        ?>
+        // Unnecessary conditional (for demo purposes)
+        if ($readBook) {
+            $message = "You have read \"$bookName\".";
+        } else {
+            $message = "You have NOT read \"$bookName\".";
+        }
+    ?>
+
+    <h1>
+        <?= $message; ?>
     </h1>
 </body>
 </html>
