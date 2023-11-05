@@ -35,8 +35,16 @@
             ]
         ];
 
-        function filterByAuthor($recommendedBooks) {
+        function filterByAuthor($recommendedBooks, $author) {
+            $filteredBooks = [];
 
+            foreach ($recommendedBooks as $recommendedBook) {
+                if ($recommendedBook["author"] === $author) {
+                    $filteredBooks[] = $recommendedBook;
+                }
+            }
+
+            return $filteredBooks;
         }
     ?>
 
@@ -44,26 +52,20 @@
         <?php
             $bookCount = count($recommendedBooks);
             $currentBook = 0;
-            foreach ($recommendedBooks as $recommendedBook) : $currentBook++;
+            foreach (filterByAuthor($recommendedBooks, "Andy Weir") as $recommendedBook) : $currentBook++;
         ?>
-            <?php if ($recommendedBook["author"] === "Andy Weir") : ?>
-                <li>
-                    Name of the Book:
-                    <a href="<?= $recommendedBook["purchaseURL"]; ?>" target="_blank">
-                        <?= $recommendedBook["bookName"]; ?>
-                    </a>
-                </li>
-                <li>Year Published: <?= $recommendedBook["yearPublished"]; ?></li>
-                <li>Author: <?= $recommendedBook["author"]; ?></li>
-                <?php if ($currentBook !== $bookCount): ?>
-                    <br>
-                <?php endif; ?>
+            <li>
+                Name of the Book:
+                <a href="<?= $recommendedBook["purchaseURL"]; ?>" target="_blank">
+                    <?= $recommendedBook["bookName"]; ?>
+                </a>
+            </li>
+            <li>Year Published: <?= $recommendedBook["yearPublished"]; ?></li>
+            <li>Author: <?= $recommendedBook["author"]; ?></li>
+            <?php if ($currentBook !== $bookCount): ?>
+                <br>
             <?php endif; ?>
         <?php endforeach; ?>
     </ul>
-
-    <p>
-        <?= filterByAuthor($recommendedBook); ?>
-    </p>
 </body>
 </html>
